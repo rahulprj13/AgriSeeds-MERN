@@ -5,7 +5,7 @@ exports.addToCart = async (req, res) => {
         const { userId, product } = req.body;
         
 
-        // Validation: Check agar data aa raha hai
+        // Validation: 
         if (!userId || !product) {
             return res.status(400).json({ message: "UserId or Product missing" });
         }
@@ -43,7 +43,7 @@ exports.addToCart = async (req, res) => {
         await newItem.save();
         res.status(201).json({ message: "Added to Cart", data: newItem });
     } catch (error) {
-        console.error("BACKEND_ERROR:", error); // Ye aapke terminal/cmd mein dikhega
+        console.error("BACKEND_ERROR:", error); 
         res.status(500).json({ message: "Internal Server Error", error: error.message });
     }
 };
@@ -71,21 +71,19 @@ exports.getCart = async (req, res) => {
             return res.status(400).json({ message: "Invalid User ID" });
         }
 
-        // 1. .populate('productId') use karke Product table se latest data mangwayein
-        // 'productId' wahi naam hona chahiye jo aapke Cart Schema mein define hai
+        // 1. .populate('productId') use for fetch product data 
         const cartItems = await Cart.find({ userId }).populate({
             path: "productId",
             populate: { path: "categoryId", select: "name" }
         });
 
-        // 2. Data format ko clean karein taaki Frontend ko latest stock mile
+        // 2. clean data formate for frontend side latest stock
         const updatedCart = cartItems.map(item => {
-            // Agar product delete ho chuka hai toh null handle karein
+        
             if (!item.productId) return item; 
 
             return {
                 ...item._doc,
-                // Cart table ka purana data overwrite karein Product table ke latest data se
                 stock: item.productId.stock,
                 status: item.productId.status,
                 currentPrice: item.productId.currentPrice || item.currentPrice
