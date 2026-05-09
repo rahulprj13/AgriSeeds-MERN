@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
-import { Camera, User, Mail, Phone, Calendar, Shield, CheckCircle, XCircle, Loader2 } from "lucide-react"; // Icons ke liye
+import { Camera, User, Mail, Phone, Calendar, Shield, CheckCircle, XCircle, Loader2 } from "lucide-react"; 
 
 const API_URL = "http://localhost:5000";
 

@@ -220,7 +220,7 @@ const Home = () => {
                 desc: "9:00 AM to 6:00 PM"
               },
               {
-                icon: faShieldHalved, // Image mein Easy Return ka icon hai, yahan shield use kiya hai
+                icon: faShieldHalved, 
                 title: "EASY RETURN",
                 desc: "7 a day"
               },

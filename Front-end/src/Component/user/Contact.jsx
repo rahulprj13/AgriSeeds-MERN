@@ -37,7 +37,6 @@ const Contact = () => {
       try {
         const res = await axios.get("/api/contact");
 
-        // agar API direct object bheje ya nested data/contact bheje to dono handle ho jaye
         const contactData =
           res?.data?.contact || res?.data?.data || res?.data || null;
 

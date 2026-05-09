@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { CategoryContext } from "../context/CategoryContext";
-// 1. ProductCard ko import karein (path check kar lena apne hisab se)
 import ProductCard from "./ProductCard";
 import { ShoppingBag } from "lucide-react";
 

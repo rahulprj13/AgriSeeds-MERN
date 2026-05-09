@@ -21,7 +21,6 @@ export const CartProvider = ({ children }) => {
   }, [user]);
 
   const fetchCart = async () => {
-    // Agar user logged in nahi hai ya id nahi hai, toh request mat bhejo
     if (!userId) return;
 
     try {

@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { CategoryContext } from "../context/CategoryContext";
-import { IndianRupee, Ban, ArrowRight } from "lucide-react"; // Icons import karein
+import { IndianRupee, Ban, ArrowRight } from "lucide-react"; 
 
 const API_URL = "http://localhost:5000";
 
@@ -52,7 +52,7 @@ const Search = () => {
         // Filter products with Out of Stock and Inactive logic
         const productResults = (products || [])
             .filter((p) => {
-                // LOGIC: Inactive products ko search me mat dikhao
+                // LOGIC: Inactive products 
                 if (p.status !== "active") return false;
 
                 const name = (p?.name || "").toLowerCase();
@@ -76,7 +76,7 @@ const Search = () => {
                     isOutOfStock,
                     sellerPrice,
                     oldPrice,
-                    rawProduct: p // Full product pass karein detail page ke liye
+                    rawProduct: p // Full product pass 
                 };
             });
 
