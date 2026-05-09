@@ -113,13 +113,13 @@ exports.getOrdersForUser = async (req, res) => {
     const userId = req.user?.id;
     if (!userId) return res.status(401).json({ message: "Unauthorized" });
 
-    // 1. Saare orders fetch karein with paymentId populated
+    // 1. fetch all  orders with paymentId populated
     const orders = await Order.find({ userId }).sort({ createdAt: -1 }).populate(
       "paymentId",
       "paymentMethod"
     );
 
-    // 2. Har order ke liye uske items populate karein
+    // 2. items populate for each order
     const ordersWithItems = await Promise.all(
       orders.map(async (order) => {
         const items = await OrderItem.find({ orderId: order._id }).populate({
@@ -130,7 +130,7 @@ exports.getOrdersForUser = async (req, res) => {
         
         return {
           ...order._doc,
-          items: items // Ab frontend ko 'items' array milega jisme product image hogi
+          items: items 
         };
       })
     );
